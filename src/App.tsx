@@ -16,7 +16,14 @@ function App() {
         {id:3,title:'React',isDone:false},
         {id:4,title:'Rest API',isDone:false},
         {id:5,title:'GraphQL',isDone:false},
-    ])
+        {id:5,title:'GraphQL',isDone:false},
+        {id:5,title:'GraphQL',isDone:false},
+        {id:5,title:'GraphQL',isDone:false},
+        {id:5,title:'GraphQL',isDone:false},
+        {id:5,title:'GraphQL',isDone:false},
+        {id:5,title:'GraphQL',isDone:false},
+        {id:5,title:'GraphQL',isDone:false},
+    ]
 
     return (
         <div className="App">
