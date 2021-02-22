@@ -10,3 +10,16 @@
 .App li button {
     margin-left: 20px;
 }
+.error {
+    border: 1px solid red;
+}
+.error-message {
+    color: red;
+}
+.active-filter {
+    background: lightyellow;
+}
+.selected {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
