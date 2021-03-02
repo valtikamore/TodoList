@@ -1,9 +1,11 @@
 .App {
     padding: 30px;
     display: flex;
+    flex-direction: column;
 }
 
 .App > div {
+    margin-bottom: 100px;
     margin-right: 50px;
 }
 .active {
