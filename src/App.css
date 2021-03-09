@@ -1,12 +1,12 @@
 .App {
     padding: 30px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .App > div {
-    margin-bottom: 100px;
     margin-right: 50px;
+    margin-bottom: 10px;
 }
 .active {
     background-color: aquamarine;
