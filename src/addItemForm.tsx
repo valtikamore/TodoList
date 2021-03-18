@@ -1,14 +1,16 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
-
+import {IconButton, TextField} from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import {AddBoxOutlined} from "@material-ui/icons";
 
 
 type AddItemFromPropsType = {
-    addItem:(title:string) => void
+    addItem: (title: string) => void
 }
 
-export function AddItemForm  (props:AddItemFromPropsType) {
-    const [title,setTitle] = useState('')
-    const [error,setError] = useState<boolean>(false)
+export function AddItemForm(props: AddItemFromPropsType) {
+    const [title, setTitle] = useState('')
+    const [error, setError] = useState<boolean>(false)
     const onChangeHandler = (e:ChangeEvent<HTMLInputElement>) => {setTitle(e.currentTarget.value) }
 
     const addItem = () => {
@@ -29,12 +31,20 @@ export function AddItemForm  (props:AddItemFromPropsType) {
 
     return (
         <div>
-            <input value={title}
-                   onChange={onChangeHandler}
-                   onKeyPress={onKeyPressHandler}
-                   className={error?'error':''}/>
-            <button onClick={addItem}>+</button>
-            {error && <div className='error-message'>Field is empty</div> }
+            <TextField
+                variant='outlined'
+                value={title}
+                onChange={onChangeHandler}
+                onKeyPress={onKeyPressHandler}
+                label='Todolist title'
+                error={error}
+                helperText={error && 'Title is require'}
+            />
+            <IconButton>
+                <AddBoxOutlined
+                    fontSize={"large"}
+                    onClick={addItem}/>
+            </IconButton>
         </div>
 
     )
