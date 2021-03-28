@@ -1,5 +1,6 @@
 import {filteredTasksType, TodoListType} from "../App";
 import {v1} from "uuid";
+import {FilledTextFieldProps} from "@material-ui/core";
 
 
 type RemoveTodoListActionType = {
@@ -18,7 +19,6 @@ type ChangeTodoListTitleActionType = {
 type ChangeTodoListFilterActionType = {
     type:'CHANGE_TODOLIST_FILTER'
     id: string
-    title: string
     filter:filteredTasksType
 }
 export type ActionType = RemoveTodoListActionType | AddTodoListActionType | ChangeTodoListTitleActionType | ChangeTodoListFilterActionType
@@ -54,4 +54,17 @@ export const todoListsReducer = (todoLists:TodoListType[],action:ActionType) => 
         default :
             return todoLists
     }
+}
+
+export const RemoveTodolistAC = (id:string):RemoveTodoListActionType =>  {
+    return {type:'REMOVE_TODOLIST',id}
+}
+export const AddTodoListAC = (title:string):AddTodoListActionType =>  {
+    return {type:'ADD_TODOLIST',title}
+}
+export const ChangeTodoListTitleAC = (id:string,title:string):ChangeTodoListTitleActionType =>  {
+    return {type:'CHANGE_TODOLIST_TITLE',id,title}
+}
+export const ChangeTodoListFilterAC = (id:string,filter:filteredTasksType):ChangeTodoListFilterActionType =>  {
+    return {type:'CHANGE_TODOLIST_FILTER',id,filter}
 }
