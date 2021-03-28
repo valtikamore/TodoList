@@ -10,7 +10,7 @@ export type addTodolistActionType = {
     type:'ADD-TODOLIST'
     title:string
 }
-export type addTodolistTitle = {
+export type changeTodolistTitle = {
     type:'CHANGE-TODOLIST-TITLE',
     title:string
     id:string
@@ -59,4 +59,20 @@ export const todolistReducer = (todoLists:TodoListStateType[],action:ActionType)
             throw new Error('error')
     }
 }
+
+export const RemoveTodolistAC = (id:string):removeTodolistActionType => {
+    return {type:'REMOVE-TODOLIST',id}
+}
+export const AddTodolistAC = (title:string):addTodolistTitle => {
+    return {type:'ADD-TODOLIST',title}
+}
+
+export const ChangeTodolistAC = (title:string):changeTodolistTitle => {
+    return {type:'CHANGE-TODOLIST-TITLE',title}
+}
+
+export const ChangeFilterTodolistAC = (id:string,filter:FilteredValuesType):changeTodolistFilter => {
+    return {type:'REMOVE-TODOLIST',id,filter}
+}
+
 

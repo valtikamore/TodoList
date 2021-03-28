@@ -6,7 +6,7 @@ type addItemType = {
     addItem:(title:string) => void
 }
 
- function AddItemForm(props:addItemType) {
+ export function AddItemForm(props:addItemType) {
     const [title,setTitle] = useState<string>('')
     const [error,setError] = useState<boolean>(false)
     const onChangeHandler = (event:ChangeEvent<HTMLInputElement>) => {
@@ -50,4 +50,3 @@ type addItemType = {
         </div>
     )
 }
-export default AddItemForm
