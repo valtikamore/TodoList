@@ -1,11 +1,11 @@
-import React, { ChangeEvent} from "react";
+import React, {ChangeEvent} from "react";
 import AddItemForm from "./addItemForm";
 import {FilteredValuesType, TaskType} from "./App";
 import EditableSpan from "./EditableSpan";
 import {Button, Checkbox, IconButton} from "@material-ui/core";
-import { Delete} from "@material-ui/icons";
+import {Delete} from "@material-ui/icons";
 
-export type TodoListType = {
+type TodoListPropsType = {
     todolistID: string
     title: string
     filter: FilteredValuesType
@@ -20,7 +20,7 @@ export type TodoListType = {
 }
 
 
-export function TodoList(props: TodoListType) {
+export function TodoList(props: TodoListPropsType) {
 
     const addTask = (title: string) => {
         props.addTask(title, props.todolistID)
