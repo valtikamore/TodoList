@@ -3,6 +3,8 @@ import { v1 } from 'uuid';
 import './App.css';
 import {TodoList} from "./TodoList";
 import AddItemForm from "./addItemForm";
+import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
+import {Menu} from "@material-ui/icons";
 
 export type FilteredValuesType = 'all'|'completed'|'active'
 export type TaskType =  {
@@ -39,6 +41,7 @@ function App() {
             {id:v1(),title:'Blockchain',isDone:true},
             {id:v1(),title:'Vue',isDone:false},
             {id:v1(),title:'MongoDB',isDone:false},
+            {id:v1(),title:'Apollo',isDone:false},
         ],
     })
     function removeTask(taskId:string, todoListId:string) {
@@ -107,6 +110,8 @@ function App() {
             tasksForTodoList = tasksForTodoList.filter(t => t.isDone)
         }
         return (
+            <Grid item >
+                <Paper style={{padding:'10px'}}>
             <TodoList todolistID={tl.id}
                       title={tl.title}
                       filter={tl.filter}
@@ -119,12 +124,34 @@ function App() {
                       changeTaskTitle={changeTaskTitle}
                       changeTodoListTitle={changeTodoListTitle}
             />
+                </Paper>
+            </Grid>
         )
     })
     return (
         <div className="App">
-            <AddItemForm addItem={addTodoList}/>
-            {todolistComponents}
+            <AppBar position={"static"}>
+                <Toolbar>
+                    <IconButton edge={"start"} color={"inherit"} aria-label='menu'>
+                        <Menu/>
+                    </IconButton>
+                    <Typography variant={"h6"}>
+                        TodoList
+                    </Typography>
+                    <Button color={"inherit"}>Login</Button>
+                </Toolbar>
+            </AppBar>
+            <Container fixed>
+                <Grid container style={{padding:'20px'}}>
+                    <AddItemForm addItem={addTodoList}/>
+                </Grid>
+                <Grid container spacing={3}>
+                    {todolistComponents}
+                </Grid>
+
+
+            </Container>
+
         </div>
     );
 }

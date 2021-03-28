@@ -1,4 +1,6 @@
 import React, {useState, KeyboardEvent, ChangeEvent} from "react";
+import { IconButton, TextField} from "@material-ui/core";
+import {AddBox} from "@material-ui/icons";
 
 type addItemType = {
     addItem:(title:string) => void
@@ -30,15 +32,21 @@ type addItemType = {
     }
     return (
         <div>
-            <input
+            <TextField
+                variant={"outlined"}
                 value={title}
                 onChange={onChangeHandler}
                 onKeyPress={onKeyPressAddItem}
-                className={error ? 'error' : ''}
+                error={!!error}
+                label={'TITLE'}
+                helperText={error}
             />
-            <button onClick={addTask}
-            >+</button>
-            {error && <div className={'error-message'}>Title is empty</div>}
+            <IconButton
+                color={"primary"}
+                onClick={addTask}
+            >
+                <AddBox/>
+            </IconButton>
         </div>
     )
 }
