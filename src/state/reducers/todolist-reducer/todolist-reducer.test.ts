@@ -6,7 +6,7 @@ import {
     RemoveTodolistAC,
     todolistsReducer
 } from "./todolist-reducer";
-import {FilteredValuesType, TodoListStateType} from "../../App";
+import {FilteredValuesType, TodoListStateType} from "../../../App";
 
 describe('todolistReducer should', () => {
 
