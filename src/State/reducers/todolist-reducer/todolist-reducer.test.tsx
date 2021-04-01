@@ -7,7 +7,7 @@ import {
     todoListsReducer
 } from './todolist-reducer';
 import {v1} from 'uuid';
-import {filteredTasksType, TodoListType} from '../App';
+import {filteredTasksType, TodoListType} from '../../../App';
 
 
 

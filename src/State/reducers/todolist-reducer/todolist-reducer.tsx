@@ -1,6 +1,6 @@
-import {filteredTasksType, TodoListType} from "../App";
+import {filteredTasksType, TodoListType} from "../../../App";
 import {v1} from "uuid";
-import {FilledTextFieldProps} from "@material-ui/core";
+
 
 
 type RemoveTodoListActionType = {
@@ -23,7 +23,7 @@ type ChangeTodoListFilterActionType = {
 }
 export type ActionType = RemoveTodoListActionType | AddTodoListActionType | ChangeTodoListTitleActionType | ChangeTodoListFilterActionType
 
-export const todoListsReducer = (todoLists:TodoListType[],action:ActionType) => {
+export const todoListsReducer = (todoLists:TodoListType[],action:ActionType):TodoListType[] => {
     switch (action.type) {
         case "REMOVE_TODOLIST": {
             return (
