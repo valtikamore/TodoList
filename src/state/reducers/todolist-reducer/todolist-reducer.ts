@@ -46,7 +46,7 @@ export const todolistsReducer = (state:TodoListStateType[],action:ActionsType):T
         case "CHANGE-TODOLIST-FILTER": {
             const todoList = state.find(t => t.id === action.id)
             if (todoList) {
-                todoList.filter = 'completed'
+                todoList.filter = action.filter
             }
             return [...state]
         }
