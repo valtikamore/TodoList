@@ -3,68 +3,68 @@ import {v1} from "uuid";
 
 
 
-type RemoveTodoListActionType = {
+export type RemoveTodoListActionType = {
     type:'REMOVE_TODOLIST'
-    id:string
+    todolistId:string
 }
-type AddTodoListActionType = {
+export type AddTodoListActionType = {
     type:'ADD_TODOLIST'
     title:string
+    todolistId:string
 }
 type ChangeTodoListTitleActionType = {
     type:'CHANGE_TODOLIST_TITLE'
-    id: string
+    todolistId: string
     title: string
 }
 type ChangeTodoListFilterActionType = {
     type:'CHANGE_TODOLIST_FILTER'
-    id: string
+    todolistId: string
     filter:filteredTasksType
 }
 export type ActionType = RemoveTodoListActionType | AddTodoListActionType | ChangeTodoListTitleActionType | ChangeTodoListFilterActionType
 
-export const todoListsReducer = (todoLists:TodoListType[],action:ActionType):TodoListType[] => {
+export const todoListsReducer = (state:TodoListType[],action:ActionType):TodoListType[] => {
     switch (action.type) {
         case "REMOVE_TODOLIST": {
             return (
-                todoLists.filter(tl => tl.id !== action.id)
+                state.filter(tl => tl.id !== action.todolistId)
             )
         }
         case "ADD_TODOLIST": {
-                const  newTodoListId = v1()
-                let newTodolist: TodoListType = {id: newTodoListId, title: action.title, filter: 'all'}
-                return [...todoLists,newTodolist]
+                let newTodolist: TodoListType = {id: action.todolistId, title: action.title, filter: 'all'}
+                return [...state,newTodolist]
         }
         case "CHANGE_TODOLIST_TITLE": {
-            const todoList = todoLists.find(tl => tl.id === action.id)
+            const todoList = state.find(tl => tl.id === action.todolistId)
             if (todoList) {
                 todoList.title = action.title
-                return [...todoLists]
+                return [...state]
             }
-            return todoLists
+            return state
         }
         case "CHANGE_TODOLIST_FILTER": {
-            const  todoList = todoLists.find(tl => tl.id === action.id)
+            const  todoList = state.find(tl => tl.id === action.todolistId)
             if (todoList) {
                 todoList.filter = action.filter
-                return [...todoLists]
+                return [...state]
             }
-            return todoLists
+            return state
         }
         default :
-            return todoLists
+            return state
     }
 }
 
-export const RemoveTodolistAC = (id:string):RemoveTodoListActionType =>  {
-    return {type:'REMOVE_TODOLIST',id}
+export const RemoveTodolistAC = (todolistId:string):RemoveTodoListActionType =>  {
+    return {type:'REMOVE_TODOLIST',todolistId}
 }
 export const AddTodoListAC = (title:string):AddTodoListActionType =>  {
-    return {type:'ADD_TODOLIST',title}
+    return {type:'ADD_TODOLIST',title,todolistId:v1()}
 }
-export const ChangeTodoListTitleAC = (id:string,title:string):ChangeTodoListTitleActionType =>  {
-    return {type:'CHANGE_TODOLIST_TITLE',id,title}
+export const ChangeTodoListTitleAC = (todolistId:string,title:string):ChangeTodoListTitleActionType =>  {
+    return {type:'CHANGE_TODOLIST_TITLE',todolistId,title}
 }
-export const ChangeTodoListFilterAC = (id:string,filter:filteredTasksType):ChangeTodoListFilterActionType =>  {
-    return {type:'CHANGE_TODOLIST_FILTER',id,filter}
+export const ChangeTodoListFilterAC = (todolistId:string,filter:filteredTasksType):ChangeTodoListFilterActionType =>  {
+    return {type:'CHANGE_TODOLIST_FILTER',todolistId,filter}
 }
