@@ -28,7 +28,7 @@ type changeTaskTitleActionType = {
 
 
 
-type ActionsType =removeTaskActionType | addTaskActionType | changeTaskStatusActionType | changeTaskTitleActionType | addTodolistActionType | removeTodolistActionType
+export type ActionsType =removeTaskActionType | addTaskActionType | changeTaskStatusActionType | changeTaskTitleActionType | addTodolistActionType | removeTodolistActionType
 
 export const tasksReducer = (state:TasksStateType,action:ActionsType):TasksStateType => {
     switch (action.type ){

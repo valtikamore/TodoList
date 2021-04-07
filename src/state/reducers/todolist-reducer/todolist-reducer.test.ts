@@ -1,9 +1,9 @@
 import { v1 } from "uuid"
 import {
-     AddTodolistAC,
-   ChangeTodolistFilterAC,
-    ChangeTodolistTitleAC,
-    RemoveTodolistAC,
+     addTodolistAC,
+   changeTodolistFilterAC,
+    changeTodolistTitleAC,
+    removeTodolistAC,
     todolistsReducer
 } from "./todolist-reducer";
 import {FilteredValuesType, TodoListStateType} from "../../../App";
@@ -23,14 +23,14 @@ describe('todolistReducer should', () => {
         ]
     })
     test('be removed', () => {
-        const action = RemoveTodolistAC(todoListID_1)
+        const action = removeTodolistAC(todoListID_1)
         const endValue = todolistsReducer(startValue,action)
 
         expect(endValue[0]).toEqual(startValue[1])
     })
     test('be add', () => {
         const title = 'What to steal'
-        const action = AddTodolistAC(title)
+        const action = addTodolistAC(title)
         const endValue = todolistsReducer(startValue,action)
 
         expect(endValue[0]).toEqual(startValue[0])
@@ -42,7 +42,7 @@ describe('todolistReducer should', () => {
     })
     test('change todolist title', () => {
         const title = 'What to steal'
-        const action = ChangeTodolistTitleAC(title,todoListID_1)
+        const action = changeTodolistTitleAC(title,todoListID_1)
         const endValue = todolistsReducer(startValue,action)
 
         expect(endValue[0].title).toEqual(title)
@@ -51,7 +51,7 @@ describe('todolistReducer should', () => {
     })
     test('change todolist filter', () => {
         const filter:FilteredValuesType = 'completed'
-        const action = ChangeTodolistFilterAC(filter,todoListID_1)
+        const action = changeTodolistFilterAC(filter,todoListID_1)
         const endValue = todolistsReducer(startValue,action)
 
         expect(endValue[0].filter).toEqual(filter)
