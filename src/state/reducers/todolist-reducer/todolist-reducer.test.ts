@@ -6,7 +6,7 @@ import {
     removeTodolistAC,
     todolistsReducer
 } from "./todolist-reducer";
-import {FilteredValuesType, TodoListStateType} from "../../../App";
+import {FilteredValuesType, TodoListStateType} from "../../../AppRedux";
 
 
 let todoListID_1 :string

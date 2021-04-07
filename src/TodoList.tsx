@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from "react";
 
-import {FilteredValuesType, TaskType} from "./App";
+import {FilteredValuesType, TaskType} from "./AppRedux";
 import EditableSpan from "./EditableSpan";
 import {Button, Checkbox, IconButton} from "@material-ui/core";
 import {Delete} from "@material-ui/icons";
