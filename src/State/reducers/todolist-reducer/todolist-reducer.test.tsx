@@ -1,5 +1,4 @@
 import {
-    ActionType,
     AddTodoListAC,
     ChangeTodoListFilterAC,
     ChangeTodoListTitleAC,
@@ -7,7 +6,7 @@ import {
     todoListsReducer
 } from './todolist-reducer';
 import {v1} from 'uuid';
-import {filteredTasksType, TodoListType} from '../../../AppUseReducers';
+import {filteredTasksType, TodoListType} from '../../../AppWithRedux';
 
 test('correct todolist should be removed', () => {
     let todolistId1 = v1();

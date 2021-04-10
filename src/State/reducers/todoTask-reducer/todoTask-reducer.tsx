@@ -1,6 +1,11 @@
 import { v1 } from "uuid";
-import { TasksForTodoListType} from "../../../AppUseReducers";
-import {AddTodoListActionType, RemoveTodoListActionType} from "../todolist-reducer/todolist-reducer";
+import {TasksForTodoListType} from "../../../AppWithRedux";
+import {
+    AddTodoListActionType,
+    RemoveTodoListActionType,
+    todoListId1,
+    todoListId2
+} from "../todolist-reducer/todolist-reducer";
 
 
 type RemoveTaskActionType = {
@@ -17,27 +22,46 @@ type ChangeTaskTitleActionType = {
     type:'CHANGE_TASK_TITLE'
     taskId:string
     newTitle:string
-    todolistId:string
+    todolistId: string
 }
 type ChangeTaskStatusActionType = {
-    type:'CHANGE_TASK_STATUS'
-    todolistId:string
-    taskId:string
-    isDoneTask :boolean
+    type: 'CHANGE_TASK_STATUS'
+    todolistId: string
+    taskId: string
+    isDoneTask: boolean
 }
- type ActionType = RemoveTaskActionType | AddTaskActionType | ChangeTaskTitleActionType | ChangeTaskStatusActionType | AddTodoListActionType | RemoveTodoListActionType
+type ActionType =
+    RemoveTaskActionType
+    | AddTaskActionType
+    | ChangeTaskTitleActionType
+    | ChangeTaskStatusActionType
+    | AddTodoListActionType
+    | RemoveTodoListActionType
 
-export const todoTaskReducer = (state:TasksForTodoListType,action:ActionType):TasksForTodoListType => {
+let initialState: TasksForTodoListType = {
+    [todoListId1]: [
+        {id: v1(), title: 'Html&css', isDone: true},
+        {id: v1(), title: 'JS', isDone: true},
+        {id: v1(), title: 'React', isDone: false},
+        {id: v1(), title: 'Rest API', isDone: false},
+    ],
+    [todoListId2]: [
+        {id: v1(), title: 'GraphQL', isDone: false},
+        {id: v1(), title: 'GraphQL', isDone: false},
+        {id: v1(), title: 'GraphQL', isDone: false},
+    ]
+}
+export const todoTaskReducer = (state = initialState, action: ActionType): TasksForTodoListType => {
     switch (action.type) {
-        case 'REMOVE_TASK':{
+        case 'REMOVE_TASK': {
             return {
                 ...state,
-                [action.todolistId] : state[action.todolistId].filter(task => task.id !== action.taskId)
+                [action.todolistId]: state[action.todolistId].filter(task => task.id !== action.taskId)
             }
         }
         case "ADD_TASK": {
             const newTask = {
-                id:v1(),
+                id: v1(),
                 title:action.title,
                 isDone:false
             }
