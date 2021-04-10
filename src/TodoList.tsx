@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from "react";
-import {filteredTasksType, Task1Type} from "./App";
+import {filteredTasksType, Task1Type} from "./AppUseReducers";
 import {AddItemForm} from "./addItemForm";
 import {EditableSpan} from "./EditableSpan";
 import {Button, Checkbox, IconButton} from "@material-ui/core";
@@ -21,18 +21,13 @@ export type TodoListTypeProps = {
 
 export function TodoList(props: TodoListTypeProps) {
 
-    const addTask = (title: string) => {
-       props.addTask(title,props.id)
-    }
-    const removeTodolist = () => {
-        props.removeTodoList(props.id)
-    }
-    const changeTodoListTitle = (title:string) => {
-        props.changeTodoListTitle(props.id,title)
-    }
+    const addTask = (title: string) =>  props.addTask(title,props.id)
+    const removeTodolist = () =>   props.removeTodoList(props.id)
+    const changeTodoListTitle = (title:string) =>  props.changeTodoListTitle(props.id,title)
     const onAllClickHandler = () => props.changeFilter('all', props.id)
     const onActiveClickHandler = () => props.changeFilter('active', props.id)
     const onCompletedClickHandler = () => props.changeFilter('completed', props.id)
+
     const tasksMap = props.tasks.map(t => {
         const onClickHandller = () => {
             props.removeTask(t.id, props.id)

@@ -1,5 +1,5 @@
 import { v1 } from "uuid";
-import { TasksForTodoListType} from "../../../App";
+import { TasksForTodoListType} from "../../../AppUseReducers";
 import {AddTodoListActionType, RemoveTodoListActionType} from "../todolist-reducer/todolist-reducer";
 
 
@@ -25,8 +25,6 @@ type ChangeTaskStatusActionType = {
     taskId:string
     isDoneTask :boolean
 }
-
-
  type ActionType = RemoveTaskActionType | AddTaskActionType | ChangeTaskTitleActionType | ChangeTaskStatusActionType | AddTodoListActionType | RemoveTodoListActionType
 
 export const todoTaskReducer = (state:TasksForTodoListType,action:ActionType):TasksForTodoListType => {
