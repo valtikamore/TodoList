@@ -1,38 +1,40 @@
-import React, {useState, KeyboardEvent, ChangeEvent} from "react";
-import { IconButton, TextField} from "@material-ui/core";
+import React, {useState, KeyboardEvent, ChangeEvent, useCallback} from "react";
+import {IconButton, TextField} from "@material-ui/core";
 import {AddBox} from "@material-ui/icons";
 
 type addItemType = {
     addItem:(title:string) => void
 }
 
- export const AddItemForm = React.memo((props:addItemType) =>  {
-     const [title,setTitle] = useState<string>('')
-     const [error,setError] = useState<null|string>(null)
+ export const AddItemForm = React.memo((props:addItemType) => {
+     const [title, setTitle] = useState<string>('')
+     const [error, setError] = useState<null | string>(null)
      console.log('additemform')
 
-     const onChangeHandler = (event:ChangeEvent<HTMLInputElement>) => {
-         setTitle(event.currentTarget.value)
-     }
-
-     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-         if(error !== null) {
-             setError(null)
-         }
-         if(e.key === 'Enter' && title !== '') {
-             props.addItem(title.trim())
-             setTitle('')
-         }
-     }
-     const addTask = () => {
+     const addItem = () => {
          const trimmedTask = title.trim()
-         if(trimmedTask) {
+         if (trimmedTask) {
              props.addItem(trimmedTask)
          } else {
              setError('Title is requared')
          }
          setTitle('')
      }
+     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+         if (error !== null) {
+             setError(null)
+         }
+         setTitle(event.currentTarget.value)
+     }
+
+     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+
+         if (e.key === 'Enter' && title !== '') {
+             props.addItem(title.trim())
+             setTitle('')
+         }
+     }
+
      return (
          <div>
              <TextField
@@ -46,7 +48,7 @@ type addItemType = {
              />
              <IconButton
                  color={"primary"}
-                 onClick={addTask}
+                 onClick={addItem}
              >
                  <AddBox/>
              </IconButton>

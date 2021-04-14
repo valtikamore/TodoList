@@ -20,7 +20,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./state/redux/store";
 
 export type FilteredValuesType = 'all' | 'completed' | 'active'
-export type TaskType = {
+export interface TaskType  {
     id: string
     title: string
     isDone: boolean
@@ -44,31 +44,31 @@ function AppRedux() {
     const removeTask = useCallback((taskId: string, todoListId: string)=> {
         let action = removeTaskAC(taskId, todoListId)
         dispatch(action)
-    },[])
+    },[dispatch])
     const addTask = useCallback((title: string, todoListId: string) =>  {
         let action = addTaskAC(title, todoListId)
         dispatch(action)
-    },[])
+    },[dispatch])
     const changeStatus = useCallback((taskId: string, isDoneTask: boolean, todoListId: string)=> {
         let action = changeTaskStatusAC(taskId, isDoneTask, todoListId)
         dispatch(action)
-    },[])
+    },[dispatch])
     const changeTaskTitle = useCallback((taskId: string, newTitle: string, todoListId: string)=> {
         let action = changeTaskTitleAC(taskId, newTitle, todoListId)
         dispatch(action)
-    },[])
+    },[dispatch])
     const changeFilter = useCallback((newFilterValue: FilteredValuesType, todoListId: string) =>{
         let action = changeTodolistFilterAC(newFilterValue, todoListId)
         dispatch(action)
-    },[])
+    },[dispatch])
     const changeTodoListTitle = useCallback((newTitle: string, todoListId: string)=> {
         let action = changeTodolistTitleAC(newTitle, todoListId)
         dispatch(action)
-    },[])
+    },[dispatch])
     const removeTodolist = useCallback((todoListId: string)=> {
         let action = removeTodolistAC(todoListId)
         dispatch(action)
-    },[])
+    },[dispatch])
     const addTodoList = useCallback((title: string) =>  {
         let action = addTodolistAC(title)
         dispatch(action)
