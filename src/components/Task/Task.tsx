@@ -1,7 +1,8 @@
-import {TaskType} from "./AppRedux";
-import React, {ChangeEvent, useCallback} from "react";
-import {Checkbox} from "@material-ui/core";
-import EditableSpan from "./EditableSpan";
+import {TaskType} from "../../AppRedux";
+import React, {ChangeEvent} from "react";
+import {Checkbox, IconButton} from "@material-ui/core";
+import EditableSpan from "../EditableSpan/EditableSpan";
+import {Delete} from "@material-ui/icons";
 
 interface newTaskType extends TaskType {
     removeTask: (taskId: string) => void
@@ -34,7 +35,9 @@ export const Task = React.memo((props:newTaskType) => {
                 onChange={onChangeHandler}
             />
             <EditableSpan title={title} changeTaskTitle={onChangeTaskTitle}/>
-            <button onClick={onRemoveClick}>x</button>
+            <IconButton onClick={onRemoveClick}>
+                <Delete/>
+            </IconButton>
         </li>
     )
 })

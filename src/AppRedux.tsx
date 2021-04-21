@@ -1,10 +1,10 @@
 import React, {useCallback} from 'react';
 import './App.css';
-import {TodoList} from "./TodoList";
+import {TodoList} from "./components/Todolist/TodoList";
 
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";
-import {AddItemForm} from "./addItemForm";
+import {AddItemForm} from "./components/AddItemForm/addItemForm";
 import {
     addTodolistAC,
     changeTodolistFilterAC,

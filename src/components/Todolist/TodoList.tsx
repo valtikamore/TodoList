@@ -1,11 +1,11 @@
 import React, {ChangeEvent, useCallback} from "react";
 
-import {FilteredValuesType, TaskType} from "./AppRedux";
-import EditableSpan from "./EditableSpan";
+import {FilteredValuesType, TaskType} from "../../AppRedux";
+import EditableSpan from "../EditableSpan/EditableSpan";
 import {Button, Checkbox, IconButton} from "@material-ui/core";
 import {Delete} from "@material-ui/icons";
-import {AddItemForm} from "./addItemForm";
-import {Task} from "./Task";
+import {AddItemForm} from "../AddItemForm/addItemForm";
+import {Task} from "../Task/Task";
 
 type TodoListPropsType = {
     todoListID: string
