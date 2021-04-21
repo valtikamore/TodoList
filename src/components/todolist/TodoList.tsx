@@ -1,17 +1,17 @@
 import React, {ChangeEvent} from "react";
-import {filteredTasksType, TaskType} from "./AppWithRedux";
-import {AddItemForm} from "./addItemForm";
-import {EditableSpan} from "./EditableSpan";
+import {filteredTasksType, TaskType} from "../../AppWithRedux";
+import {AddItemForm} from "../../addItemForm";
+import {EditableSpan} from "../../EditableSpan";
 import {Button, Checkbox, IconButton} from "@material-ui/core";
 import { Delete} from "@material-ui/icons";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootState} from "./State/redux/store";
+import {AppRootState} from "../../State/redux/store";
 import {
     AddTaskAC,
     ChangeTaskStatusAC,
     ChangeTaskTitleAC,
     RemoveTaskAC
-} from "./State/reducers/todoTask-reducer/todoTask-reducer";
+} from "../../State/reducers/todoTask-reducer/todoTask-reducer";
 
 export type TodoListTypeProps = {
     id: string
@@ -22,7 +22,7 @@ export type TodoListTypeProps = {
     filter: filteredTasksType
 }
 
-export function TodoList(props: TodoListTypeProps) {
+export const TodoList = React.memo((props: TodoListTypeProps) => {
     const tasks = useSelector<AppRootState,TaskType[]>((state => state.tasks[props.id]))
     const dispatch = useDispatch()
 
@@ -100,4 +100,4 @@ export function TodoList(props: TodoListTypeProps) {
             </div>
         </div>
     )
-}
+})

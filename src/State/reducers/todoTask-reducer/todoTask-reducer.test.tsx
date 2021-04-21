@@ -1,6 +1,6 @@
 
 import {v1} from 'uuid';
-import { TasksForTodoListType} from '../../../App';
+import { TasksForTodoListType} from '../../../UseReducer-original/App';
 import { AddTodoListAC, RemoveTodolistAC } from '../todolist-reducer/todolist-reducer';
 import {AddTaskAC, ChangeTaskStatusAC, ChangeTaskTitleAC, RemoveTaskAC, todoTaskReducer} from "./todoTask-reducer";
 

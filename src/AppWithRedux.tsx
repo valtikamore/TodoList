@@ -1,5 +1,5 @@
 import './App.css';
-import {TodoList} from "./TodoList";
+import {TodoList} from "./components/todolist/TodoList";
 import {AddItemForm} from "./addItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";

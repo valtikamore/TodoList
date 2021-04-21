@@ -1,21 +1,11 @@
-import './App.css';
+import '../App.css';
 // import {TodoList} from "./TodoList";
-// import {useReducer} from "react";
+// import {useState} from "react";
 // import {v1} from 'uuid';
 // import {AddItemForm} from "./addItemForm";
 // import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 // import {Menu} from "@material-ui/icons";
-// import {
-//     AddTodoListAC,
-//     ChangeTodoListFilterAC, ChangeTodoListTitleAC, RemoveTodolistAC,
-//     todoListsReducer
-// } from "./State/reducers/todolist-reducer/todolist-reducer";
-// import {
-//     AddTaskAC, ChangeTaskStatusAC,
-//     ChangeTaskTitleAC,
-//     RemoveTaskAC,
-//     todoTaskReducer
-// } from "./State/reducers/todoTask-reducer/todoTask-reducer";
+//
 //
 // export type filteredTasksType = 'all' | 'active' | 'completed'
 // export  type TodoListType = {
@@ -33,14 +23,14 @@ import './App.css';
 // }
 //
 //
-// function AppUseReducers() {
+// function App() {
 //     let todoListId1 = v1()
 //     let todoListId2 = v1()
-//     const [todoLists, dispatchToTodolistsReducer] = useReducer(todoListsReducer, [
+//     const [todoLists, setTodoLists] = useState<TodoListType[]>([
 //         {id: todoListId1, title: 'What to learn', filter: 'all'},
 //         {id: todoListId2, title: 'What to learn', filter: 'all'}
 //     ])
-//     const [tasks, dispatchToTasksReducer] = useReducer(todoTaskReducer, {
+//     const [tasks, setTasks] = useState<TasksForTodoListType>({
 //         [todoListId1]: [
 //             {id: v1(), title: 'Html&css', isDone: true},
 //             {id: v1(), title: 'JS', isDone: true},
@@ -55,42 +45,63 @@ import './App.css';
 //
 //     })
 //
-// //useReducer second param(func) => action(result of calling AC)
+//
 //     function removeTask(taskId: string, todoListId: string) {
-//         dispatchToTasksReducer(RemoveTaskAC(taskId, todoListId))
+//         let todolistTasks = tasks[todoListId]
+//         tasks[todoListId] = todolistTasks.filter(t => t.id !== taskId)
+//         setTasks({...tasks})
 //     }
-//
 //     function addTask(title: string, todoListId: string) {
-//         dispatchToTasksReducer(AddTaskAC(title, todoListId))
+//         let newTask = {id: v1(), title: title, isDone: false,}
+//         let todolistTasks = tasks[todoListId]
+//         tasks[todoListId] = [newTask, ...todolistTasks]
+//         setTasks({...tasks})
 //     }
-//
-//     function changeTaskStatus(taskId: string, isDoneTask: boolean, todoListId: string) {
-//         dispatchToTasksReducer(ChangeTaskStatusAC(todoListId, taskId, isDoneTask))
-//     }
-//
-//     function changeTaskTitle(taskId: string, newTitle: string, todoListId: string) {
-//         dispatchToTasksReducer(ChangeTaskTitleAC(taskId, newTitle, todoListId))
-//     }
-//
 //     function addTodoList(title: string) {
-//         dispatchToTodolistsReducer(AddTodoListAC(title))
-//         dispatchToTasksReducer(AddTodoListAC(title))
-//     }
+//         let newTodoListId = v1()
+//         let newTodolist: TodoListType = {id: newTodoListId, title: title, filter: 'all'}
+//         setTodoLists([newTodolist, ...todoLists])
+//         setTasks({
+//             ...tasks,
+//             [newTodoListId]: []
+//         })
 //
+//     }
+//     function changeTaskStatus(id: string, isDone: boolean, todoListId: string) {
+//         let todolistTasks = tasks[todoListId]
+//         let task = todolistTasks.find(t => t.id === id)
+//         if (task) {
+//             task.isDone = isDone
+//             setTasks({...tasks})
+//         }
+//     }
+//     function changeTaskTitle(id: string, newTitle: string, todoListId: string) {
+//         let todolistTasks = tasks[todoListId]
+//         let task = todolistTasks.find(t => t.id === id)
+//         if (task) {
+//             task.title = newTitle
+//             setTasks({...tasks})
+//         }
+//     }
 //     function changeFilter(value: filteredTasksType, todoListId: string) {
-//         dispatchToTodolistsReducer(ChangeTodoListFilterAC(todoListId, value))
+//         let todolist = todoLists.find(tl => tl.id === todoListId)
+//         if (todolist) {
+//             todolist.filter = value
+//             setTodoLists([...todoLists])
+//         }
 //     }
-//
-//     function changeTodoListTitle(todolistId: string, title: string) {
-//         dispatchToTodolistsReducer(ChangeTodoListTitleAC(todolistId, title))
+//     function changeTodoListTitle(Id: string, title: string) {
+//         const todolist = todoLists.find(tl => tl.id === Id)
+//         if (todolist) {
+//             todolist.title = title
+//             setTodoLists([...todoLists])
+//         }
 //     }
-//
 //     function removeTodoList(todoListId: string) {
-//         let action = RemoveTodolistAC(todoListId)
-//         dispatchToTodolistsReducer(action)
-//         dispatchToTasksReducer(action)
+//         setTodoLists(todoLists.filter(tl => tl.id !== todoListId))
+//         delete tasks[todoListId]
+//         setTasks({...tasks})
 //     }
-//
 //     const todolistMap = todoLists.map(tl => {
 //         let allTodoListTasks = tasks[tl.id]
 //         let tasksForTodoList = allTodoListTasks
@@ -127,20 +138,20 @@ import './App.css';
 //     })
 //     return (
 //         <div className="App">
-//             <AppBar position="static">
-//                 <Toolbar>
-//                     <IconButton
-//                         edge="start"
-//                         color="inherit"
-//                         aria-label="menu">
-//                         <Menu/>
-//                     </IconButton>
-//                     <Typography variant="h6">
-//                         Todolist
-//                     </Typography>
-//                     <Button color="inherit">Login</Button>
-//                 </Toolbar>
-//             </AppBar>
+//                 <AppBar position="static">
+//                     <Toolbar >
+//                             <IconButton
+//                                 edge="start"
+//                                 color="inherit"
+//                                 aria-label="menu">
+//                                 <Menu/>
+//                             </IconButton>
+//                             <Typography variant="h6">
+//                                 Todolist
+//                             </Typography>
+//                             <Button color="inherit">Login</Button>
+//                     </Toolbar>
+//                 </AppBar>
 //             <Container fixed>
 //                 <Grid container style={{padding: '20px 0 20px 0'}}>
 //                     <AddItemForm addItem={addTodoList}/>
@@ -154,4 +165,4 @@ import './App.css';
 //     );
 // }
 //
-// export default AppUseReducers
+// export default App;
