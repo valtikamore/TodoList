@@ -1,32 +1,31 @@
 import React, {useCallback} from 'react';
-import './App.css';
-import {TodoList} from "./components/Todolist/TodoList";
+import '../../App.css';
 
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";
-import {AddItemForm} from "./components/AddItemForm/addItemForm";
+import {AddItemForm} from "../AddItemForm/addItemForm";
 import {
     addTodolistAC,
     changeTodolistFilterAC,
     changeTodolistTitleAC, removeTodolistAC,
-} from "./state/reducers/todolist-reducer/todolist-reducer";
+} from "../../state/reducers/todolist-reducer/todolist-reducer";
 import {
     addTaskAC,
     changeTaskStatusAC,
     changeTaskTitleAC,
     removeTaskAC,
-} from "./state/reducers/tasks-reducer/task-reducer";
+} from "../../state/reducers/tasks-reducer/task-reducer";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "./state/redux/store";
+import {AppRootStateType} from "../../state/redux/store";
+import {TodoList} from "../Todolist/TodoList";
 
 export type FilteredValuesType = 'all' | 'completed' | 'active'
 
-export interface TaskType {
+export type TaskType =  {
     id: string
     title: string
     isDone: boolean
 }
-
 export type TodoListStateType = {
     id: string
     title: string
@@ -37,7 +36,6 @@ export type TasksStateType = {
 }
 
 function AppRedux() {
-
     let todolists = useSelector<AppRootStateType, TodoListStateType[]>(state => state.todolists)
     let tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
 
@@ -119,7 +117,6 @@ function AppRedux() {
                     {todolistComponents}
                 </Grid>
             </Container>
-
         </div>
     );
 }

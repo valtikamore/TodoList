@@ -1,4 +1,4 @@
-import { TasksStateType } from "../../../AppRedux";
+import { TasksStateType } from "../../../components/App/AppRedux";
 import {
     addTaskAC,
     changeTaskStatusAC,

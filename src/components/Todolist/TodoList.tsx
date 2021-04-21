@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useCallback} from "react";
 
-import {FilteredValuesType, TaskType} from "../../AppRedux";
+import {FilteredValuesType, TaskType} from "../App/AppRedux";
 import EditableSpan from "../EditableSpan/EditableSpan";
 import {Button, Checkbox, IconButton} from "@material-ui/core";
 import {Delete} from "@material-ui/icons";
@@ -60,9 +60,7 @@ export const TodoList = React.memo((props: TodoListPropsType) => {
     const tasks = tasksForTodoList.map(t => (
         <Task
             key={t.id}
-            title={t.title}
-            id={t.id}
-            isDone={t.isDone}
+            task={t}
             removeTask={onClickHandler}
             changeStatus={onChangeHandler}
             changeTaskTitle={onTitleChangeHandler}
