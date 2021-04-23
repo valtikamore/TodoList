@@ -35,7 +35,7 @@ export type TasksStateType = {
     [key: string]: TaskType[]
 }
 
-function AppRedux() {
+export function AppRedux() {
     let todolists = useSelector<AppRootStateType, TodoListStateType[]>(state => state.todolists)
     let tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
 

@@ -3,9 +3,9 @@ import AppRedux from "./AppRedux";
 import {ReduxStoreProviderDecorator} from "./ReduxStoreProviderDecorator";
 
 export default {
-    title:'Todolist/AppWithRedux',
-    component:AppRedux,
-    decorators:[ReduxStoreProviderDecorator]
+    title: 'Todolist/AppWithRedux',
+    component: AppRedux,
+    decorators: [ReduxStoreProviderDecorator]
 } as Meta
 
 const Template: Story = () => <AppRedux/>
