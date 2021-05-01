@@ -31,7 +31,15 @@ type commonTaskType = {
     totalCount: number
     error: string
 }
-
+type updateTaskType = {
+    title: string
+    description: string
+    completed: boolean
+    status: number
+    priority:number
+    startDate: string
+    deadline: string
+}
 
 const instance = axios.create({
     baseURL : 'https://social-network.samuraijs.com/api/1.1',
