@@ -1,6 +1,7 @@
 import {Meta, Story} from "@storybook/react";
 import {action} from "@storybook/addon-actions";
-import EditableSpan, {EditableSpanPropsType} from "./EditableSpan";
+import {EditableSpan, EditableSpanPropsType} from "./EditableSpan";
+
 
 export default {
     title: 'TOdolist/EditableSpan',
@@ -22,7 +23,7 @@ const changeTaskStatusCallback = action('Status changed inside Task')
 
 const baseArgs = {
     changeTaskTitle: changeTaskStatusCallback,
-    title:'html'
+    value:'html'
 }
 export const EditableSpanExample = Template.bind({})
 EditableSpanExample.args = {

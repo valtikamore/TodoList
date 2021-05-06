@@ -1,6 +1,8 @@
 import {Meta, Story} from "@storybook/react";
 import {action} from "@storybook/addon-actions";
-import {TaskPropsType, Task} from "./Task";
+import {Task, TaskPropsType} from "./Task";
+
+
 
 export default {
     title: 'Todolist/Task',
@@ -20,11 +22,5 @@ const baseArgs = {
 }
 export const TaskIsDoneExample = Template.bind({})
 TaskIsDoneExample.args = {
-    ...baseArgs,
-    task: {id: '1', title: 'JS', isDone: true},
-}
-export const TaskIsntDoneExample = Template.bind({})
-TaskIsntDoneExample.args = {
-    ...baseArgs,
-    task: {id: '1', title: 'JS', isDone: false},
+    ...baseArgs
 }
