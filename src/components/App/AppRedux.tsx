@@ -9,23 +9,17 @@ import {
     changeTodolistFilterAC,
     changeTodolistTitleAC, FilteredValuesType, removeTodolistAC, setTodosThunk,
 } from "../../state/reducers/todolist-reducer/todolist-reducer";
-import {
-    addTaskAC,
-    changeTaskStatusAC,
-    changeTaskTitleAC,
-    removeTaskAC,
+import {addTaskTC,
+    changeTaskTitleAC, removeTaskTC, updateTaskStatusTC,
 } from "../../state/reducers/tasks-reducer/task-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../state/redux/store";
 import {TodoList} from "../Todolist/TodoList";
+import {TaskStatuses, TaskType} from "../../api/todolist-api";
 
 
 
-export type TaskType =  {
-    id: string
-    title: string
-    isDone: boolean
-}
+
 export type TodoListStateType = {
     id: string
     title: string
@@ -46,18 +40,16 @@ export function AppRedux() {
 
     const dispatch = useDispatch()
 
-    const removeTask = useCallback((taskId: string, todoListId: string) => {
-        let action = removeTaskAC(taskId, todoListId)
-        dispatch(action)
-    }, [dispatch])
-    const addTask = useCallback((title: string, todoListId: string) => {
-        let action = addTaskAC(title, todoListId)
-        dispatch(action)
-    }, [dispatch])
-    const changeStatus = useCallback((taskId: string, isDoneTask: boolean, todoListId: string) => {
-        let action = changeTaskStatusAC(taskId, isDoneTask, todoListId)
-        dispatch(action)
-    }, [dispatch])
+    const removeTask = useCallback(function (id: string, todolistId: string) {
+        dispatch(removeTaskTC(todolistId,id))
+    }, []);
+    const addTask = useCallback(function (title: string, todolistId: string) {
+        dispatch(addTaskTC(todolistId,title));
+    }, []);
+    const changeStatus = useCallback(function (id: string, status: TaskStatuses, todolistId: string) {
+        dispatch(updateTaskStatusTC(todolistId,status,id));
+    }, [dispatch]);
+
     const changeTaskTitle = useCallback((taskId: string, newTitle: string, todoListId: string) => {
         let action = changeTaskTitleAC(taskId, newTitle, todoListId)
         dispatch(action)
