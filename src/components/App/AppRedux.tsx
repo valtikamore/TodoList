@@ -9,13 +9,14 @@ import {
     changeTodolistFilterAC,
     changeTodolistTitleAC, FilteredValuesType, removeTodolistAC, setTodosThunk,
 } from "../../state/reducers/todolist-reducer/todolist-reducer";
-import {addTaskTC,
-    changeTaskTitleAC, removeTaskTC, updateTaskStatusTC,
+import {
+    addTaskTC,
+    changeTaskTitleAC, removeTaskTC, TasksStateType, updateTaskStatusTC,
 } from "../../state/reducers/tasks-reducer/task-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../state/redux/store";
 import {TodoList} from "../Todolist/TodoList";
-import {TaskStatuses, TaskType} from "../../api/todolist-api";
+import {TaskStatuses} from "../../api/todolist-api";
 
 
 
@@ -25,9 +26,7 @@ export type TodoListStateType = {
     title: string
     filter: FilteredValuesType
 }
-export type TasksStateType = {
-    [key: string]: TaskType[]
-}
+
 
 export function AppRedux() {
 
