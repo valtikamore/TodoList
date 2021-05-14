@@ -1,6 +1,7 @@
-import {AddItemForm, addItemType} from "./addItemForm";
+
 import {Meta, Story} from "@storybook/react";
 import {action} from "@storybook/addon-actions";
+import {AddItemForm, addItemType} from "./additemForm";
 
 export default {
     title: 'TOdolist/Additemform',
