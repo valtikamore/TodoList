@@ -1,10 +1,8 @@
-import { TasksStateType } from "../../../components/App/AppRedux";
+
 import {
     addTaskAC,
-    changeTaskStatusAC,
-    changeTaskTitleAC,
     removeTaskAC,
-    tasksReducer
+    tasksReducer, TasksStateType
 } from "./task-reducer";
 import {addTodolistAC, removeTodolistAC} from "../todolist-reducer/todolist-reducer";
 
@@ -14,56 +12,38 @@ describe('correct task should be', ()=> {
     beforeEach(()=> {
          startState = {
             "todolistId1": [
-                { id: "1", title: "CSS", isDone: false },
-                { id: "2", title: "JS", isDone: true },
-                { id: "3", title: "React", isDone: false }
+                {  description: 'blabla', title: 'first task', status: 0, priority: 0, startDate: '', deadline: '', id: 'taskId1', todoListId: 'todolistId1', order: 1, addedDate: '' },
+
             ],
             "todolistId2": [
-                { id: "1", title: "bread", isDone: false },
-                { id: "2", title: "milk", isDone: true },
-                { id: "3", title: "tea", isDone: false }
+                {  description: 'blabla', title: 'first task', status: 0, priority: 0, startDate: '', deadline: '', id: 'taskId2', todoListId: 'todolistId2', order: 1, addedDate: '' },
             ]
         };
     })
+
     test('deleted from correct array', () => {
-        const action = removeTaskAC("2", "todolistId2");
+        const action = removeTaskAC("taskId1", "todolistId1");
         const endState = tasksReducer(startState, action)
 
         expect(endState).toEqual({
-            "todolistId1": [
-                { id: "1", title: "CSS", isDone: false },
-                { id: "2", title: "JS", isDone: true },
-                { id: "3", title: "React", isDone: false }
-            ],
+            "todolistId1": [],
             "todolistId2": [
-                { id: "1", title: "bread", isDone: false },
-                { id: "3", title: "tea", isDone: false }
+                { description: 'blabla', title: 'first task', status: 0, priority: 0, startDate: '', deadline: '', id: 'taskId2', todoListId: 'todolistId2', order: 1, addedDate: ''  },
             ]
         });
 
     });
+
     test('added to correct array', () => {
-        const startState: TasksStateType = {
-            "todolistId1": [
-                { id: "1", title: "CSS", isDone: false },
-                { id: "2", title: "JS", isDone: true },
-                { id: "3", title: "React", isDone: false }
-            ],
-            "todolistId2": [
-                { id: "1", title: "bread", isDone: false },
-                { id: "2", title: "milk", isDone: true },
-                { id: "3", title: "tea", isDone: false }
-            ]
-        };
-        const action = addTaskAC("juice", "todolistId2");
+
+        const action = addTaskAC(  {  description: 'blabla11111', title: 'juice', status: 0, priority: 0, startDate: '', deadline: '', id: 'taskId2', todoListId: 'todolistId1', order: 1, addedDate: '' });
+
         const endState = tasksReducer(startState, action)
 
         expect(endState["todolistId1"].length).toBe(3);
-        expect(endState["todolistId2"].length).toBe(4);
-        expect(endState["todolistId2"][0].id).toBeDefined();
-        expect(endState["todolistId2"][0].title).toBe('juice');
-        expect(endState["todolistId2"][0].isDone).toBeFalsy();
+
     })
+
     test('status of specified task', () => {
         const startState: TasksStateType = {
             "todolistId1": [

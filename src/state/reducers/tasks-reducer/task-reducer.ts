@@ -12,7 +12,8 @@ import {
     SetTodolistsActionType
 } from "../todolist-reducer/todolist-reducer";
 import {AppRootStateType} from "../../redux/store";
-import {setAppActionType, setAppStatusAC, setErrorActionType} from "../appReducer/appReducer";
+import {setAppActionType, setAppStatusAC, setErrorActionType, setErrorAppAC} from "../appReducer/appReducer";
+import {handleServerAppError, handleServerNetworkError} from "../../../utils/errors";
 export type UpdateDomainTaskModelType = {
     title?: string
     description?: string
@@ -105,22 +106,29 @@ export const addTaskTC = (todolistId: string, title:string) => (dispatch: Dispat
     dispatch(setAppStatusAC('loading'))
         taskAPI.createTask(todolistId,title)
             .then((res) => {
-                let newTask = res.data.data.item
-                dispatch(addTaskAC(newTask))
-                dispatch(setAppStatusAC('succeeded'))
+               if(res.data.resultCode === 0 ) {
+                   let newTask = res.data.data.item
+                   dispatch(addTaskAC(newTask))
+                   dispatch(setAppStatusAC('succeeded'))
+               } else {
+                   handleServerAppError(dispatch,res.data)
+               }
+            })
+            .catch(err => {
+                handleServerNetworkError(dispatch,err.message)
             })
     }
 
 export const updateTaskStatusTC = (todolistId:string,domainModel: UpdateDomainTaskModelType,taskId:string) =>  (dispatch:Dispatch,getState:() => AppRootStateType) => {
-        dispatch(setAppStatusAC('loading'))
-        let state = getState()
-        const task = state.tasks[todolistId].find(t => t.id === taskId)
-
+debugger
+    let state = getState()
+    const task = state.tasks[todolistId].find(t => t.id === taskId)
     if (!task) {
         //throw new Error("task not found in the state");
         console.warn('task not found in the state')
         return
     }
+
     const apiModel: UpdateTaskModelType = {
         deadline: task.deadline,
         description: task.description,
@@ -130,11 +138,19 @@ export const updateTaskStatusTC = (todolistId:string,domainModel: UpdateDomainTa
         status: task.status,
         ...domainModel
     }
+
+    dispatch(setAppStatusAC('loading'))
     taskAPI.updateTask(todolistId, taskId, apiModel)
         .then((res) => {
-            const action = updateTaskAC(taskId, domainModel, todolistId)
-            dispatch(action)
-            dispatch(setAppStatusAC('succeeded'))
-        })
+            if(res.data.resultCode === 0 ) {
+                const action = updateTaskAC(taskId, domainModel, todolistId)
+                // dispatch(action)
+                dispatch(setAppStatusAC('succeeded'))
+            } else {
+                handleServerAppError(dispatch,res.data)
+            }
+        }).catch(err => {
+        handleServerNetworkError(dispatch,err.messages)
+    })
 
 }
