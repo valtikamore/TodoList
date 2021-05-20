@@ -3,8 +3,8 @@ import {Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, TextField
 import {useFormik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import {loginTC} from "./authReducer";
-import { AppRootStateType } from '../../app/store';
 import {Redirect} from "react-router-dom";
+import {AppRootStateType} from "../../state/redux/store";
 
 
 type FormikErrorType = {
