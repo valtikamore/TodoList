@@ -1,10 +1,12 @@
 import axios from "axios";
+import { FilterValuesType } from "../state/todolists-reducer";
 
 export interface TodolistType {
     id: string
     addedDate: string
     order: number
     title: string
+    filter:FilterValuesType
 }
 interface responseType<T = {}> {
     resultCode: number
@@ -59,7 +61,7 @@ const instance = axios.create({
 
 export const todolistsAPI = {
     getTodos() {
-        return instance.get<TodolistType>('/todo-lists')
+        return instance.get<TodolistType[]>('/todo-lists')
     },
     createTodo(title:string) {
         return instance.post<responseType<{item: TodolistType }>>('/todo-lists',{title})

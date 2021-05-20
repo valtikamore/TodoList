@@ -1,39 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a670337d-0647-4255-972c-826317da6f93" name="Default Changelist" comment="15-3 types/disable buttons/refactor app">
-      <change afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.storybook/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.storybook/preview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AddItemForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Task.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Todolist.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/todolist.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/state/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/state/tasks-reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/state/todolists-reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stories/task.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stories/todolist.stories.tsx" afterDir="false" />
+    <list default="true" id="a670337d-0647-4255-972c-826317da6f93" name="Default Changelist" comment="15-3">
+      <change afterPath="$PROJECT_DIR$/src/state/tasks-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppWithRedux.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditableSpan.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/State/reducers/todoTask-reducer/todoTask-reducer.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/State/reducers/todoTask-reducer/todoTask-reducer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/State/reducers/todolist-R-todotask-R/todolist-todotask-reducer.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/State/reducers/todolist-reducer/todolist-reducer.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/State/reducers/todolist-reducer/todolist-reducer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/State/redux/store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UseReducer-original/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UseReducer-original/AppUseReducers.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/addItemForm.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/todolist/TodoList.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/serviceWorker.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Todolist.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/todolist.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todolistAPI.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/tasks-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/todolists-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/task.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/task.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/todolist.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/todolist.stories.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +39,7 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1pGEm01qYWW15QbkNeUHmKTwUAw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -66,7 +48,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/stories" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/state" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -77,11 +59,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\All-learning-Materials-And-tasks\TODOLIST\TodoList\src\state" />
       <recent name="D:\All-learning-Materials-And-tasks\TODOLIST\TodoList\src\stories" />
       <recent name="D:\All-learning-Materials-And-tasks\TODOLIST\TodoList" />
       <recent name="D:\All-learning-Materials-And-tasks\todo\todo\src" />
       <recent name="D:\All-learning-Materials-And-tasks\todo\todo\src\State\reducers\task-reducer" />
-      <recent name="D:\All-learning-Materials-And-tasks\todo\todo\src\state\reducers\tasks-reducer" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\All-learning-Materials-And-tasks\todo\todo\src\State\reducers\todolist-reducer" />
@@ -91,33 +73,30 @@
       <recent name="D:\All-learning-Materials-And-tasks\todo\todo\src\state\reducers\user-reducer" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.todolist task should be.change task status">
-    <configuration name="todolist task should be.change task status" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Jest.tasks should be added to correct array">
+    <configuration name="tasks should be added for todolist" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/State/reducers/todoTask-reducer/todoTask-reducer.test.tsx" />
+      <test-file value="$PROJECT_DIR$/src/state/tasks-reducer.test.ts" />
       <test-names>
-        <test-name value="todolist task should be" />
-        <test-name value="change task status" />
+        <test-name value="tasks should be added for todolist" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="todolist task should be.new array should be added when.new todolist is added" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="tasks should be added to correct array" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/State/reducers/todoTask-reducer/todoTask-reducer.test.tsx" />
+      <test-file value="$PROJECT_DIR$/src/state/tasks-reducer.test.ts" />
       <test-names>
-        <test-name value="todolist task should be" />
-        <test-name value="new array should be added when" />
-        <test-name value="new todolist is added" />
+        <test-name value="tasks should be added to correct array" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -157,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.storybook" />
+        <item itemvalue="Jest.tasks should be added to correct array" />
         <item itemvalue="npm.start" />
+        <item itemvalue="Jest.tasks should be added for todolist" />
+        <item itemvalue="npm.storybook" />
         <item itemvalue="Jest.todolist task should be.property with todolistId should be deleted" />
-        <item itemvalue="Jest.todolist task should be.new array should be added when.new todolist is added" />
-        <item itemvalue="Jest.todolist task should be.change task status" />
       </list>
     </recent_temporary>
   </component>
@@ -199,6 +178,8 @@
       <workItem from="1618042364361" duration="9874000" />
       <workItem from="1621359891337" duration="1790000" />
       <workItem from="1621416249356" duration="15014000" />
+      <workItem from="1621434260179" duration="6797000" />
+      <workItem from="1621501760875" duration="6325000" />
     </task>
     <task id="LOCAL-00001" summary="0.5 repeat">
       <created>1614950477048</created>

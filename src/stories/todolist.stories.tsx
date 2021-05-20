@@ -1,6 +1,6 @@
 import {Meta} from "@storybook/react";
 import React, {useEffect, useState} from 'react'
-import {todolistsAPI} from "../api/todolist";
+import {todolistsAPI} from "../api/todolistAPI";
 
 export default {
     title: 'API/todolist'

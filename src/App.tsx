@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react'
+import React, {useCallback, useEffect} from 'react'
 import './App.css';
 import { Todolist} from './Todolist';
 import {AddItemForm} from './AddItemForm';
@@ -7,19 +7,21 @@ import {Menu} from '@material-ui/icons';
 import {
     addTodolistAC,
     changeTodolistFilterAC,
-    changeTodolistTitleAC, FilterValuesType,
-    removeTodolistAC,
+    changeTodolistTitleAC, fetchTodolistsTC, FilterValuesType,
+    removeTodolistTC,
 } from './state/todolists-reducer';
-import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from './state/tasks-reducer';
+import {
+    addTaskAC,
+    addTasksTC,
+    changeTaskStatusAC,
+    changeTaskTitleAC,
+    deleteTasksTC,
+    TasksStateType
+} from './state/tasks-reducer';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from './state/store';
-import {TaskStatuses, TaskType, TodolistType} from "./api/todolist";
+import {TaskStatuses, TodolistType} from "./api/todolistAPI";
 
-
-
-export type TasksStateType = {
-    [key: string]: Array<TaskType>
-}
 
 
 function App() {
@@ -28,13 +30,16 @@ function App() {
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
     const dispatch = useDispatch();
 
+    useEffect(() => {
+       dispatch( fetchTodolistsTC())
+    },[])
+
     const removeTask = useCallback(function (id: string, todolistId: string) {
-        const action = removeTaskAC(id, todolistId);
-        dispatch(action);
+        dispatch(deleteTasksTC(todolistId,id));
     }, []);
 
     const addTask = useCallback(function (title: string, todolistId: string) {
-        const action = addTaskAC(title, todolistId);
+        const action = addTasksTC(title, todolistId);
         dispatch(action);
     }, []);
 
@@ -54,8 +59,7 @@ function App() {
     }, []);
 
     const removeTodolist = useCallback(function (id: string) {
-        const action = removeTodolistAC(id);
-        dispatch(action);
+        dispatch(removeTodolistTC(id));
     }, []);
 
     const changeTodolistTitle = useCallback(function (id: string, title: string) {
@@ -95,6 +99,7 @@ function App() {
                                     <Todolist
                                         id={tl.id}
                                         title={tl.title}
+                                        filter={tl.filter}
                                         tasks={allTodolistTasks}
                                         removeTask={removeTask}
                                         changeFilter={changeFilter}
