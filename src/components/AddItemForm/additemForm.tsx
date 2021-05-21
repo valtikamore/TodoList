@@ -1,25 +1,25 @@
 import React, {useState, KeyboardEvent, ChangeEvent} from "react";
 import {IconButton, TextField} from "@material-ui/core";
 import {AddBox} from "@material-ui/icons";
-import {RequestStatusType} from "../../state/reducers/appReducer/appReducer";
+
 
 export type addItemType = {
     addItem:(title:string) => void
-    entityStatus?:RequestStatusType}
+    disabled?:boolean}
 
-export const AddItemForm = React.memo((props:addItemType) => {
+export const AddItemForm = React.memo(({addItem,disabled = false}:addItemType) => {
     const [title, setTitle] = useState<string>('')
     const [error, setError] = useState<null | string>(null)
-    console.log('additemform')
 
-    const addItem = () => {
+    const addItemHandler = () => {
         const trimmedTask = title.trim()
         if (trimmedTask) {
-            props.addItem(trimmedTask)
+            addItem(trimmedTask)
+            setTitle('')
         } else {
             setError('Title is requared')
         }
-        setTitle('')
+
     }
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         if (error !== null) {
@@ -31,14 +31,14 @@ export const AddItemForm = React.memo((props:addItemType) => {
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
 
         if (e.key === 'Enter' && title !== '') {
-            props.addItem(title.trim())
+            addItem(title.trim())
             setTitle('')
         }
     }
 
     return (
         <div>
-            <TextField disabled={props.entityStatus === 'loading'}
+            <TextField disabled={disabled}
                        variant={"outlined"}
                        value={title}
                        onChange={onChangeHandler}
@@ -47,9 +47,9 @@ export const AddItemForm = React.memo((props:addItemType) => {
                        label={'TITLE'}
                        helperText={error}
             />
-            <IconButton disabled={props.entityStatus === 'loading'}
+            <IconButton disabled={disabled}
                         color={"primary"}
-                        onClick={addItem}
+                        onClick={addItemHandler}
             >
                 <AddBox/>
             </IconButton>
