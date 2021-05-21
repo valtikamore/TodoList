@@ -7,6 +7,7 @@ import {
     setAppStatusAC,
     SetAppStatusActionType
 } from "../../state/reducers/appReducer/appReducer";
+import {clearDataActionType, clearTodosDataAC} from "../../state/reducers/todolist-reducer/todolist-reducer";
 
 const initialState = {
     isLoggedIn: false
@@ -49,6 +50,7 @@ export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
             if (res.data.resultCode === 0) {
                 dispatch(setIsLoggedInAC(false))
                 dispatch(setAppStatusAC('succeeded'))
+                dispatch(clearTodosDataAC())
             } else {
                 handleServerAppError(res.data, dispatch);
             }
@@ -60,4 +62,4 @@ export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
 }
 
 // types
-type ActionsType = ReturnType<typeof setIsLoggedInAC> | SetAppStatusActionType | SetAppErrorActionType
+type ActionsType = ReturnType<typeof setIsLoggedInAC> | SetAppStatusActionType | SetAppErrorActionType | clearDataActionType
